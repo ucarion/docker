@@ -41,11 +41,12 @@ its dependencies. There are two main ways to install this tool:
 
 ###Native Installation
 
-* Install sphinx: `pip install sphinx`
-    * Mac OS X: `[sudo] pip-2.7 install sphinx`
-* Install sphinx httpdomain contrib package: `pip install sphinxcontrib-httpdomain`
-    * Mac OS X: `[sudo] pip-2.7 install sphinxcontrib-httpdomain`
-* If pip is not available you can probably install it using your favorite package manager as **python-pip**
+Install dependencies from `requirements.txt` file in your `docker/docs`
+directory:
+
+* Linux: `pip install -r docs/requirements.txt`
+
+* Mac OS X: `[sudo] pip-2.7 -r docs/requirements.txt`
 
 ###Alternative Installation: Docker Container
 
@@ -56,6 +57,9 @@ docs inside the container, even starting a simple HTTP server on port
 8000 so that you can connect and see your changes. Just run ``docker
 build .`` and run the resulting image. This is the equivalent to
 ``make clean server`` since each container starts clean.
+
+In the ``docs/`` directory, run:
+    ```docker build -t docker:docs . && docker run -p 8000:8000 docker:docs```
 
 Usage
 -----
@@ -133,7 +137,7 @@ Manpages
 --------
 
 * To make the manpages, run ``make man``. Please note there is a bug
-  in spinx 1.1.3 which makes this fail.  Upgrade to the latest version
+  in Sphinx 1.1.3 which makes this fail.  Upgrade to the latest version
   of Sphinx.
 * Then preview the manpage by running ``man _build/man/docker.1``,
   where ``_build/man/docker.1`` is the path to the generated manfile
